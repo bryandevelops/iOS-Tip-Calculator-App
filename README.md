@@ -10,8 +10,8 @@ Time spent: **2** hours spent in total
 
 The following **required** functionality is complete:
 
-* [✔️] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
-* [✔️] User can select between tip percentages by tapping different values on the segmented control and the tip value is updated accordingly
+* [x] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
+* [x] User can select between tip percentages by tapping different values on the segmented control and the tip value is updated accordingly
 
 The following **optional** features are implemented:
 
@@ -22,19 +22,17 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+* [ ] List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src= title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One of the biggest challenges I encountered while building this app was getting accustomed to the Xcode IDE. iOS and Mobile app development in general is not something I've done before, which meant I had to take my time to familiarize myself with this new work environment. I love how intuitive adding UI elements is because of the object library. Dragging-and-dropping UI objects and connecting them to the ViewController made development a lot more fluent than expected, and it makes me excited about learning what more is possible in the world of iOS app development.
 
 ## License
 

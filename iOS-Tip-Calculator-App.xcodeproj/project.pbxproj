@@ -16,6 +16,7 @@
 		8547B04A2773D01B00B797B8 /* iOS_Tip_Calculator_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547B0492773D01B00B797B8 /* iOS_Tip_Calculator_AppTests.swift */; };
 		8547B0542773D01B00B797B8 /* iOS_Tip_Calculator_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547B0532773D01B00B797B8 /* iOS_Tip_Calculator_AppUITests.swift */; };
 		8547B0562773D01B00B797B8 /* iOS_Tip_Calculator_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547B0552773D01B00B797B8 /* iOS_Tip_Calculator_AppUITestsLaunchTests.swift */; };
+		8547B065278F558100B797B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547B064278F558100B797B8 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8547B04F2773D01B00B797B8 /* iOS-Tip-Calculator-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Tip-Calculator-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8547B0532773D01B00B797B8 /* iOS_Tip_Calculator_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Tip_Calculator_AppUITests.swift; sourceTree = "<group>"; };
 		8547B0552773D01B00B797B8 /* iOS_Tip_Calculator_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Tip_Calculator_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8547B064278F558100B797B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				8547B0342773D01A00B797B8 /* SceneDelegate.swift */,
 				8547B0362773D01A00B797B8 /* ViewController.swift */,
 				8547B0382773D01A00B797B8 /* Main.storyboard */,
+				8547B064278F558100B797B8 /* SettingsViewController.swift */,
 				8547B03B2773D01B00B797B8 /* Assets.xcassets */,
 				8547B03D2773D01B00B797B8 /* LaunchScreen.storyboard */,
 				8547B0402773D01B00B797B8 /* Info.plist */,
@@ -261,6 +264,7 @@
 				8547B0372773D01A00B797B8 /* ViewController.swift in Sources */,
 				8547B0332773D01A00B797B8 /* AppDelegate.swift in Sources */,
 				8547B0352773D01A00B797B8 /* SceneDelegate.swift in Sources */,
+				8547B065278F558100B797B8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

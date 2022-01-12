@@ -9,13 +9,21 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var tipSlider: UISlider!
+    @IBOutlet weak var tipPercentage: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+                
+        tipPercentage.text = "\(currentValue)%"
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -20,13 +20,35 @@ class ViewController: UIViewController {
         
         // Sets the title in the Navigation Bar
         self.title = "Tip Calculator"
+        billAmountTextField.keyboardType = .numberPad
+        billAmountTextField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will appear")
+        
         // This is a good place to retrieve the default tip percentage from UserDefaults
         // and use it to update the tip amount
+        let defaults = UserDefaults.standard
+        let intValue = defaults.double(forKey: "myInt")
+        let bill = Double(billAmountTextField.text!) ?? 0
+        let tip = bill * (intValue / 100)
+        let total = bill + tip
+        
+        tipAmountLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+        
+        if (intValue == 15) {
+            tipControl.selectedSegmentIndex = 0
+        } else if (intValue == 18) {
+            tipControl.selectedSegmentIndex = 1
+        } else if (intValue == 20) {
+            tipControl.selectedSegmentIndex = 2
+        } else {
+            tipControl.selectedSegmentIndex = UISegmentedControl.noSegment
+        }
+        print("\(intValue)")
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -53,11 +75,17 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
+        let defaults = UserDefaults.standard
+        
 //        Update Tip amount label
         tipAmountLabel.text = String(format: "$%.2f", tip)
         
 //        Update Total amount label
         totalLabel.text = String(format: "$%.2f", total)
+        
+        defaults.set(tip, forKey: "myInt")
+        defaults.synchronize()
+        
     }
     
 }

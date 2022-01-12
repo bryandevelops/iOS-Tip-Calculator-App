@@ -14,14 +14,37 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        let intValue = defaults.double(forKey: "myInt")
+        
+        tipSlider.value = Float(intValue)
+        tipPercentage.text = "\(Int(intValue))%"
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let currentValue = Int(sender.value)
-                
+        let defaults = UserDefaults.standard
+        
         tipPercentage.text = "\(currentValue)%"
+        defaults.set(Double(currentValue), forKey: "myInt")
+        defaults.synchronize()
     }
     
     /*

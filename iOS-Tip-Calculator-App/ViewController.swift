@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var background: UIView!
     @IBOutlet weak var billAmountTextField: UITextField!
     @IBOutlet weak var tipAmountLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
@@ -18,8 +19,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Sets the title in the Navigation Bar
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        
         self.title = "Tip Calculator"
+        background.backgroundColor = .systemGray4
+    
         billAmountTextField.keyboardType = .numberPad
         billAmountTextField.becomeFirstResponder()
     }
@@ -32,6 +38,7 @@ class ViewController: UIViewController {
         // and use it to update the tip amount
         let defaults = UserDefaults.standard
         let intValue = defaults.double(forKey: "myInt")
+        let boolValue = defaults.bool(forKey: "myBool")
         let bill = Double(billAmountTextField.text!) ?? 0
         let tip = bill * (intValue / 100)
         let total = bill + tip
@@ -47,6 +54,13 @@ class ViewController: UIViewController {
             tipControl.selectedSegmentIndex = 2
         } else {
             tipControl.selectedSegmentIndex = UISegmentedControl.noSegment
+        }
+        
+        
+        if (boolValue) {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
         }
         print("\(intValue)")
     }

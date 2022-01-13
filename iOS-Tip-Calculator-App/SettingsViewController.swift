@@ -9,20 +9,34 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet var background: UIView!
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var tipPercentage: UILabel!
+    @IBOutlet weak var lightSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Settings"
+        background.backgroundColor = .systemGray4
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
         let intValue = defaults.double(forKey: "myInt")
+        let boolValue = defaults.bool(forKey: "myBool")
         
         tipSlider.value = Float(intValue)
         tipPercentage.text = "\(Int(intValue))%"
+        
+        
+        if (boolValue) {
+            lightSwitch.setOn(true, animated: true)
+            overrideUserInterfaceStyle = .dark
+        } else {
+            lightSwitch.setOn(false, animated: false)
+            overrideUserInterfaceStyle = .light
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +58,21 @@ class SettingsViewController: UIViewController {
         
         tipPercentage.text = "\(currentValue)%"
         defaults.set(Double(currentValue), forKey: "myInt")
+        defaults.synchronize()
+    }
+    
+    
+    @IBAction func lightSwitchOn(_ sender: UISwitch) {
+        let defaults = UserDefaults.standard
+        
+        if (sender.isOn) {
+            overrideUserInterfaceStyle = .dark
+            defaults.set(sender.isOn, forKey: "myBool")
+        } else {
+            overrideUserInterfaceStyle = .light
+            defaults.set(sender.isOn, forKey: "myBool")
+        }
+        
         defaults.synchronize()
     }
     

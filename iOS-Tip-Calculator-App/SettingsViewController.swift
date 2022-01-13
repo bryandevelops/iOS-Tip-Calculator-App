@@ -13,6 +13,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var tipPercentage: UILabel!
     @IBOutlet weak var lightSwitch: UISwitch!
+    @IBOutlet weak var partySizeLabel: UILabel!
+    @IBOutlet weak var partySizeCounter: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +27,15 @@ class SettingsViewController: UIViewController {
         let defaults = UserDefaults.standard
         let intValue = defaults.double(forKey: "myInt")
         let boolValue = defaults.bool(forKey: "myBool")
+        let counterValue = defaults.integer(forKey: "myCounter")
         
         tipSlider.value = Float(intValue)
         tipPercentage.text = "\(Int(intValue))%"
+        
+        partySizeCounter.value = Double(counterValue)
+        partySizeLabel.text = "\(counterValue)"
+        
+        
         
         
         if (boolValue) {
@@ -73,6 +81,16 @@ class SettingsViewController: UIViewController {
             defaults.set(sender.isOn, forKey: "myBool")
         }
         
+        defaults.synchronize()
+    }
+    
+    @IBAction func changeCounter(_ sender: UIStepper) {
+        let currentValue = Int(sender.value)
+        let defaults = UserDefaults.standard
+        
+        partySizeLabel.text = String(currentValue)
+        
+        defaults.set(currentValue, forKey: "myCounter")
         defaults.synchronize()
     }
     

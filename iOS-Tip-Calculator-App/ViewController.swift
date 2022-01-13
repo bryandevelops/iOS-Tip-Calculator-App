@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(1, forKey: "myCounter")
         
         self.title = "Tip Calculator"
         background.backgroundColor = .systemGray4
@@ -39,12 +40,19 @@ class ViewController: UIViewController {
         let defaults = UserDefaults.standard
         let intValue = defaults.double(forKey: "myInt")
         let boolValue = defaults.bool(forKey: "myBool")
+        let counterValue = defaults.integer(forKey: "myCounter")
         let bill = Double(billAmountTextField.text!) ?? 0
         let tip = bill * (intValue / 100)
         let total = bill + tip
         
         tipAmountLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        
+        if (counterValue == 1) {
+            totalLabel.text = String(format: "$%.2f", total)
+        } else {
+            totalLabel.text = String(format: "$%.2f each", total / Double(counterValue))
+        }
+        
         
         if (intValue == 15) {
             tipControl.selectedSegmentIndex = 0
@@ -90,12 +98,17 @@ class ViewController: UIViewController {
         let total = bill + tip
         
         let defaults = UserDefaults.standard
+        let counterValue = defaults.integer(forKey: "myCounter")
         
 //        Update Tip amount label
         tipAmountLabel.text = String(format: "$%.2f", tip)
         
 //        Update Total amount label
-        totalLabel.text = String(format: "$%.2f", total)
+        if (counterValue == 1) {
+            totalLabel.text = String(format: "$%.2f", total)
+        } else {
+            totalLabel.text = String(format: "$%.2f each", total / Double(counterValue))
+        }
         
         defaults.set(tip, forKey: "myInt")
         defaults.synchronize()

@@ -1,40 +1,49 @@
 # Pre-work - *iOS Tip Calculator App*
 
-**iOS Tip Calculator** is a tip calculator application for iOS.
+**iOS Tip Calculator** is a tip calculator application for iOS devices.
 
 Submitted by: **Bryan Santos**
 
-Time spent: **2** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is complete:
 
-* [x] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
-* [x] User can select between tip percentages by tapping different values on the segmented control and the tip value is updated accordingly
+* [x] User can enter a bill amount, select a tip percentage, and see the tip and total values.
+* [x] User can select between multiple tip percentages by tapping different values on a segmented control, updating the tip value accordingly.
 
-The following **optional** features are implemented:
+The following **additional** features have also been implemented:
 
-* [ ] UI animations
-* [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
-
-The following **additional** features are implemented:
-
-* [ ] List anything else that you can get done to improve the app functionality!
+* [x] User has constant access to a numeric keypad for entering the bill amount. 
+* [x] User can access a Settings screen for additional functionality.
+* [x] User can utilize a slider to create a custom tip value.
+* [x] User can determine a party size for splitting the total.
+* [x] User can toggle Dark Mode.
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here is a walkthrough of the implemented user stories:
 
-<!-- <img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' /> -->
-
-##### Coming Soon #####
+<img src='https://github.com/bryandevelops/iOS-Tip-Calculator-App/blob/main/demo.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' />
+<!-- ![Tip Calculator Demo](https://github.com/bryandevelops/iOS-Tip-Calculator-App/blob/main/demo.gif) -->
 
 ## Notes
 
-One of the biggest challenges I encountered while building this app was getting accustomed to the Xcode IDE. iOS and Mobile app development in general is not something I've done before, which meant I had to take my time to familiarize myself with this new work environment. I love how intuitive adding UI elements is because of the object library. Dragging-and-dropping UI objects and connecting them to the ViewController made development a lot more fluent than expected, and it makes me excited about learning what more is possible in the world of iOS app development.
+One of the biggest challenges I encountered while building this app was getting accustomed to the Xcode IDE. iOS and Mobile app development in general is not something I've ever done before prior to this project, which meant I had to take my time to familiarize myself with this new work environment. I love how intuitive adding UI elements is because of the object library. Dragging-and-dropping UI objects and connecting them to the ViewController made development a lot more fluent than expected, and it makes me excited about learning what else is possible in the world of iOS app development. 
+
+A more specific challenge I would say was getting values to persist when changing Views. So for example, setting the custom tip slider to a 10% tip in the Settings, going back to the home page to see the updated tip, but then being able to enter back into the Settings to see the tip slider still display the 10% tip. This is very simple and fundamental to any app, but this being my first time dabbling in iOS development, it took me some time having to sift through Swift documentation to learn about UserDefaults and how they work. Once I figured this out, the time spent coding some of the other features was much shorter.
+
+```
+@IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        let defaults = UserDefaults.standard
+        
+        tipPercentage.text = "\(currentValue)%"
+        defaults.set(Double(currentValue), forKey: "myInt")
+        defaults.synchronize()
+}
+```
 
 ## License
 
